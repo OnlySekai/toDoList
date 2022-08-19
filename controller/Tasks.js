@@ -38,9 +38,8 @@ const updateTask= asyncWrapper(async (req,res,next)=>{
      .json({task})
 })
 const deleteTask= asyncWrapper(async (req,res,next)=>{
-    var a= "all"
-    if (a.localeCompare(req.body)){
-        tasks.deleteMany()
+    if (req.body.deleteAll){
+        await tasks.deleteMany()
         res.status(200).send("clear all")
         return           
         }
@@ -51,7 +50,7 @@ const deleteTask= asyncWrapper(async (req,res,next)=>{
     }
     res
      .status(200)
-     .json(task)
+     .json({task})
 })
 
 module.exports={
