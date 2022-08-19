@@ -22,7 +22,7 @@ const getTask=asyncWrapper(async (req,res,next)=>{
     }
     res
      .status(200)
-     .json(task)
+     .json({task})
 })
 const updateTask= asyncWrapper(async (req,res,next)=>{
     const task=await tasks.findOneAndUpdate({_id:req.params.id},req.body,{
@@ -35,7 +35,7 @@ const updateTask= asyncWrapper(async (req,res,next)=>{
     }
     res
      .status(200)
-     .json(task)
+     .json({task})
 })
 const deleteTask= asyncWrapper(async (req,res,next)=>{
     var a= "all"
